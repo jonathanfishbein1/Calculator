@@ -3,6 +3,9 @@
 
 <head>
     <title>Calculator</title>
+    <script>
+        const push = (val => console.log('val ' + val))
+    </script>
 </head>
 
 <body>
@@ -11,31 +14,31 @@
         <ul style=list-style-type:none>
             <li>
                 <span>
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
+                    <button onclick='push(7)'>7</button>
+                    <button onclick='push(8)'>8</button>
+                    <button onclick='push(9)'>9</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
+                    <button onclick='push(4)'>4</button>
+                    <button onclick='push(5)'>5</button>
+                    <button onclick='push(6)'>6</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
+                    <button onclick='push(1)'>1</button>
+                    <button onclick='push(2)'>2</button>
+                    <button onclick='push(3)'>3</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button style=width:120px;>0</button>
+                    <button onclick='push(0)' style=width:120px;>0</button>
                     <button>.</button>
                 </span>
             </li>
