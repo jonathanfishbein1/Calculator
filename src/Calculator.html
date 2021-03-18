@@ -15,21 +15,22 @@
         const calculate = values => {
             console.log('values', values)
             values.reduce((total, currentValue) => {
+                console.log('total ', total)
                 switch (currentValue) {
                     case '+':
-                        const [a, operator, b, ...rest] = values
+                        const [a, operator, b, ...rest] = total
                         console.log('a ', a)
                         console.log('b ', b)
                         console.log('rest ', rest)
                         total = [a + b, ...rest]
                         break;
                     default:
-                        // code block
-                        return total
+                    // code block
                 }
-                console.log('currentValue ', currentValue)
-                console.log('total ', total)
-            }, [])
+                return total
+                //console.log('currentValue ', currentValue)
+
+            }, values)
         }
     </script>
 </head>
