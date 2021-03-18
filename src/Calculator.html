@@ -6,24 +6,30 @@
     <script>
         const values = []
         const calculate = values => {
-            console.log('values', values)
-            values.reduce((total, currentValue) => {
-                console.log('total ', total)
+            console.log('total ', values.reduce((total, currentValue) => {
                 switch (currentValue) {
+                    case '*':
+                        const [a, multiplication, b, ...restMultiplication] = total
+                        total = [a * b, ...restMultiplication]
+                        break;
+                    case '/':
+                        const [c, division, d, ...restDivision] = total
+                        total = [c / d, ...restDivision]
+                        break;
                     case '+':
-                        const [a, operator, b, ...rest] = total
-                        console.log('a ', a)
-                        console.log('b ', b)
-                        console.log('rest ', rest)
-                        total = [a + b, ...rest]
+                        const [e, addition, f, ...restAddition] = total
+                        total = [e + f, ...restAddition]
+                        break;
+                    case '-':
+                        const [g, subtraction, h, ...restSubtraction] = total
+                        total = [g - h, ...restSubtraction]
                         break;
                     default:
                     // code block
                 }
                 return total
-                //console.log('currentValue ', currentValue)
-
             }, values)
+            )
         }
     </script>
 </head>
