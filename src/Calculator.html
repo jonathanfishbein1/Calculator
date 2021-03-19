@@ -19,39 +19,39 @@
                     total
                 return total
             }, values)
-            const divisionTotal = multiplicationTotal.reduce((total, currentValue, index) => {
-                if (currentValue === '/') {
-                    const [a, division, b] = total.slice(index - 1, index + 2),
-                        left = total.slice(0, index - 1),
-                        right = total.slice(index + 2)
-                    total = [...left, b !== '0' ? a / b : undefined, ...right]
-                }
-                else
-                    total
-                return total
-            }, multiplicationTotal)
-            const additionTotal = divisionTotal.reduce((total, currentValue, index) => {
-                if (currentValue === '+') {
-                    const [a, addition, b] = total.slice(index - 1, index + 2),
-                        left = total.slice(0, index - 1),
-                        right = total.slice(index + 2)
-                    total = [...left, parseInt(a) + parseInt(b), ...right]
-                }
-                else
-                    total
-                return total
-            }, divisionTotal)
-            const subtractionTotal = additionTotal.reduce((total, currentValue, index) => {
-                if (currentValue === '-') {
-                    const [a, subtraction, b] = total.slice(index - 1, index + 2),
-                        left = total.slice(0, index - 1),
-                        right = total.slice(index + 2)
-                    total = [...left, parseInt(a) - parseInt(b), ...right]
-                }
-                else
-                    total
-                return total
-            }, additionTotal)
+                , divisionTotal = multiplicationTotal.reduce((total, currentValue, index) => {
+                    if (currentValue === '/') {
+                        const [a, division, b] = total.slice(index - 1, index + 2),
+                            left = total.slice(0, index - 1),
+                            right = total.slice(index + 2)
+                        total = [...left, b !== '0' ? a / b : undefined, ...right]
+                    }
+                    else
+                        total
+                    return total
+                }, multiplicationTotal)
+                , additionTotal = divisionTotal.reduce((total, currentValue, index) => {
+                    if (currentValue === '+') {
+                        const [a, addition, b] = total.slice(index - 1, index + 2),
+                            left = total.slice(0, index - 1),
+                            right = total.slice(index + 2)
+                        total = [...left, parseInt(a) + parseInt(b), ...right]
+                    }
+                    else
+                        total
+                    return total
+                }, divisionTotal)
+                , subtractionTotal = additionTotal.reduce((total, currentValue, index) => {
+                    if (currentValue === '-') {
+                        const [a, subtraction, b] = total.slice(index - 1, index + 2),
+                            left = total.slice(0, index - 1),
+                            right = total.slice(index + 2)
+                        total = [...left, parseInt(a) - parseInt(b), ...right]
+                    }
+                    else
+                        total
+                    return total
+                }, additionTotal)
             console.log('multiplicationTotal ', multiplicationTotal)
             console.log('divisionTotal ', divisionTotal)
             console.log('additionTotal ', additionTotal)
