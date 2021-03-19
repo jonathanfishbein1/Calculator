@@ -5,15 +5,13 @@
     <title>Calculator</title>
     <script>
         let operands = []
-        let values = []
+            , values = []
         const calculate = values => {
             console.log('values ', values)
             const multiplicationTotal = values.reduce((total, currentValue, index) => {
                 if (currentValue === '*') {
-                    const [a, multiplication, b] = total.slice(index - 1, index + 2),
-                        newTotal = [...total]
-                    newTotal.splice(index - 1, 3, a * b)
-                    total = newTotal
+                    const [a, multiplication, b] = total.slice(index - 1, index + 2)
+                    total.splice(index - 1, 3, a * b)
                 }
                 else
                     total
@@ -21,10 +19,8 @@
             }, values)
             const divisionTotal = multiplicationTotal.reduce((total, currentValue, index) => {
                 if (currentValue === '/') {
-                    const [a, multiplication, b] = total.slice(index - 1, index + 2),
-                        newTotal = [...total]
-                    newTotal.splice(index - 1, 3, b !== '0' ? a / b : undefined)
-                    total = newTotal
+                    const [a, multiplication, b] = total.slice(index - 1, index + 2)
+                    total.splice(index - 1, 3, b !== 0 ? a / b : undefined)
                 }
                 else
                     total
@@ -32,10 +28,8 @@
             }, multiplicationTotal)
             const additionTotal = divisionTotal.reduce((total, currentValue, index) => {
                 if (currentValue === '+') {
-                    const [a, addition, b] = total.slice(index - 1, index + 2),
-                        newTotal = [...total]
-                    newTotal.splice(index - 1, 3, parseInt(a) + parseInt(b))
-                    total = newTotal
+                    const [a, addition, b] = total.slice(index - 1, index + 2)
+                    total.splice(index - 1, 3, parseInt(a) + parseInt(b))
                 }
                 else
                     total
@@ -43,10 +37,8 @@
             }, divisionTotal)
             const subtractionTotal = additionTotal.reduce((total, currentValue, index) => {
                 if (currentValue === '-') {
-                    const [a, addition, b] = total.slice(index - 1, index + 2),
-                        newTotal = [...total]
-                    newTotal.splice(index - 1, 3, parseInt(a) - parseInt(b))
-                    total = newTotal
+                    const [a, addition, b] = total.slice(index - 1, index + 2)
+                    total.splice(index - 1, 3, parseInt(a) - parseInt(b))
                 }
                 else
                     total
@@ -103,9 +95,9 @@
                     style=background-color:coral;>x</button></li>
             <li><button onclick='values=values.concat(operands.join("")); values.push(`-`); operands=[];'
                     style=background-color:coral;>-</button></li>
-            <li><button onclick='values=values.concat(operands.join("")); values.push(`+`); operands=[];'
+            <li><button onclick='values=values.concat(operands.join(""));  values.push(`+`); operands=[];'
                     style=background-color:coral;>+</button></li>
-            <li><button onclick='values=values.concat(operands.join("")); operands=[]; calculate(values)'
+            <li><button onclick='values=values.concat(operands.join(""));  calculate(values);  operands=[];'
                     style=background-color:coral;>=</button></li>
         </ul>
 
