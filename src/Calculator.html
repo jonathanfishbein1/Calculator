@@ -13,7 +13,7 @@
                     const [a, multiplication, b] = total.slice(index - 1, index + 2),
                         left = total.slice(0, index - 1),
                         right = total.slice(index + 2)
-                    total = [...left, a * b, ...right]
+                    total = [...left, parseInt(a) * parseInt(b), ...right]
                 }
                 else total
                 return total
@@ -23,7 +23,7 @@
                         const [a, division, b] = total.slice(index - 1, index + 2),
                             left = total.slice(0, index - 1),
                             right = total.slice(index + 2)
-                        total = [...left, b !== '0' ? a / b : undefined, ...right]
+                        total = [...left, b !== '0' ? parseFloat(a) / parseFloat(b) : undefined, ...right]
                     }
                     else total
                     return total
@@ -33,7 +33,7 @@
                         const [a, addition, b] = total.slice(index - 1, index + 2),
                             left = total.slice(0, index - 1),
                             right = total.slice(index + 2)
-                        total = [...left, parseInt(a) + parseInt(b), ...right]
+                        total = [...left, parseFloat(a) + parseFloat(b), ...right]
                     }
                     else total
                     return total
