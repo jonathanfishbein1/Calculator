@@ -6,7 +6,7 @@
     <script>
         let operands = []
             , values = []
-        const calculate = values => {
+        const calculate = () => {
             console.log('values ', values)
             const multiplicationTotal = values.reduce((total, currentValue, index) => {
                 if (currentValue === '*') {
@@ -106,7 +106,7 @@
                     style=background-color:coral;>-</button></li>
             <li><button onclick='values.push(operands.join(""), `+`); operands=[];'
                     style=background-color:coral;>+</button></li>
-            <li><button onclick='values.push(operands.join("")); calculate(values); operands=[];'
+            <li><button onclick='values.push(operands.join("")); calculate(); operands=[];'
                     style=background-color:coral;>=</button></li>
         </ul>
 
