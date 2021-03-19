@@ -20,7 +20,7 @@
             const divisionTotal = multiplicationTotal.reduce((total, currentValue, index) => {
                 if (currentValue === '/') {
                     const [a, multiplication, b] = total.slice(index - 1, index + 2)
-                    total.splice(index - 1, 3, b !== 0 ? a / b : undefined)
+                    total.splice(index - 1, 3, b !== '0' ? a / b : undefined)
                 }
                 else
                     total
@@ -48,6 +48,7 @@
             console.log('divisionTotal ', divisionTotal)
             console.log('additionTotal ', additionTotal)
             console.log('subtractionTotal ', subtractionTotal)
+            values = []
         }
     </script>
 </head>
