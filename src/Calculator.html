@@ -4,32 +4,58 @@
 <head>
     <title>Calculator</title>
     <script>
-        const values = []
+        let operands = []
+        let values = []
         const calculate = values => {
-            console.log('total ', values.reduce((total, currentValue) => {
-                switch (currentValue) {
-                    case '*':
-                        const [a, multiplication, b, ...restMultiplication] = total
-                        total = [a * b, ...restMultiplication]
-                        break;
-                    case '/':
-                        const [c, division, d, ...restDivision] = total
-                        total = [c / d, ...restDivision]
-                        break;
-                    case '+':
-                        const [e, addition, f, ...restAddition] = total
-                        total = [e + f, ...restAddition]
-                        break;
-                    case '-':
-                        const [g, subtraction, h, ...restSubtraction] = total
-                        total = [g - h, ...restSubtraction]
-                        break;
-                    default:
-                    // code block
+            console.log('values ', values)
+            const multiplicationTotal = values.reduce((total, currentValue, index) => {
+                if (currentValue === '*') {
+                    const [a, multiplication, b] = total.slice(index - 1, index + 2),
+                        newTotal = [...total]
+                    newTotal.splice(index - 1, 3, a * b)
+                    total = newTotal
                 }
+                else
+                    total
                 return total
             }, values)
-            )
+            const divisionTotal = multiplicationTotal.reduce((total, currentValue, index) => {
+                if (currentValue === '/') {
+                    const [a, multiplication, b] = total.slice(index - 1, index + 2),
+                        newTotal = [...total]
+                    newTotal.splice(index - 1, 3, b !== '0' ? a / b : undefined)
+                    total = newTotal
+                }
+                else
+                    total
+                return total
+            }, multiplicationTotal)
+            const additionTotal = divisionTotal.reduce((total, currentValue, index) => {
+                if (currentValue === '+') {
+                    const [a, addition, b] = total.slice(index - 1, index + 2),
+                        newTotal = [...total]
+                    newTotal.splice(index - 1, 3, parseInt(a) + parseInt(b))
+                    total = newTotal
+                }
+                else
+                    total
+                return total
+            }, divisionTotal)
+            const subtractionTotal = additionTotal.reduce((total, currentValue, index) => {
+                if (currentValue === '-') {
+                    const [a, addition, b] = total.slice(index - 1, index + 2),
+                        newTotal = [...total]
+                    newTotal.splice(index - 1, 3, parseInt(a) - parseInt(b))
+                    total = newTotal
+                }
+                else
+                    total
+                return total
+            }, additionTotal)
+            console.log('multiplicationTotal ', multiplicationTotal)
+            console.log('divisionTotal ', divisionTotal)
+            console.log('additionTotal ', additionTotal)
+            console.log('subtractionTotal ', subtractionTotal)
         }
     </script>
 </head>
@@ -40,42 +66,47 @@
         <ul style=list-style-type:none>
             <li>
                 <span>
-                    <button onclick=values.push(7)>7</button>
-                    <button onclick=values.push(8)>8</button>
-                    <button onclick=values.push(9)>9</button>
+                    <button onclick=operands.push(7)>7</button>
+                    <button onclick=operands.push(8)>8</button>
+                    <button onclick=operands.push(9)>9</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button onclick=values.push(4)>4</button>
-                    <button onclick=values.push(5)>5</button>
-                    <button onclick=values.push(6)>6</button>
+                    <button onclick=operands.push(4)>4</button>
+                    <button onclick=operands.push(5)>5</button>
+                    <button onclick=operands.push(6)>6</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button onclick=values.push(1)>1</button>
-                    <button onclick=values.push(2)>2</button>
-                    <button onclick=values.push(3)>3</button>
+                    <button onclick=operands.push(1)>1</button>
+                    <button onclick=operands.push(2)>2</button>
+                    <button onclick=operands.push(3)>3</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button onclick=values.push(0) style=width:120px;>0</button>
+                    <button onclick=operands.push(0) style=width:120px;>0</button>
                     <button>.</button>
                 </span>
             </li>
         </ul>
 
         <ul style=list-style-type:none;>
-            <li><button onclick='values.push(`/`)' style=background-color:coral;>/</button></li>
-            <li><button onclick='values.push(`*`)' style=background-color:coral;>x</button></li>
-            <li><button onclick='values.push(`-`)' style=background-color:coral;>-</button></li>
-            <li><button onclick='values.push(`+`)' style=background-color:coral;>+</button></li>
-            <li><button onclick='calculate(values)' style=background-color:coral;>=</button></li>
+            <li><button onclick='values=values.concat(operands.join("")); values.push(`/`); operands=[];'
+                    style=background-color:coral;>/</button></li>
+            <li><button onclick='values=values.concat(operands.join("")); values.push(`*`); operands=[];'
+                    style=background-color:coral;>x</button></li>
+            <li><button onclick='values=values.concat(operands.join("")); values.push(`-`); operands=[];'
+                    style=background-color:coral;>-</button></li>
+            <li><button onclick='values=values.concat(operands.join("")); values.push(`+`); operands=[];'
+                    style=background-color:coral;>+</button></li>
+            <li><button onclick='values=values.concat(operands.join("")); operands=[]; calculate(values)'
+                    style=background-color:coral;>=</button></li>
         </ul>
 
     </div>
