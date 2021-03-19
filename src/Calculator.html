@@ -15,8 +15,7 @@
                         right = total.slice(index + 2)
                     total = [...left, a * b, ...right]
                 }
-                else
-                    total
+                else total
                 return total
             }, values)
                 , divisionTotal = multiplicationTotal.reduce((total, currentValue, index) => {
@@ -26,8 +25,7 @@
                             right = total.slice(index + 2)
                         total = [...left, b !== '0' ? a / b : undefined, ...right]
                     }
-                    else
-                        total
+                    else total
                     return total
                 }, multiplicationTotal)
                 , additionTotal = divisionTotal.reduce((total, currentValue, index) => {
@@ -37,8 +35,7 @@
                             right = total.slice(index + 2)
                         total = [...left, parseInt(a) + parseInt(b), ...right]
                     }
-                    else
-                        total
+                    else total
                     return total
                 }, divisionTotal)
                 , subtractionTotal = additionTotal.reduce((total, currentValue, index) => {
@@ -48,8 +45,7 @@
                             right = total.slice(index + 2)
                         total = [...left, parseInt(a) - parseInt(b), ...right]
                     }
-                    else
-                        total
+                    else total
                     return total
                 }, additionTotal)
             console.log('multiplicationTotal ', multiplicationTotal)
