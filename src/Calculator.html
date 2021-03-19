@@ -98,14 +98,10 @@
         </ul>
 
         <ul style=list-style-type:none;>
-            <li><button onclick='values.push(operands); values.push(`/`); operands=[];'
-                    style=background-color:coral;>/</button></li>
-            <li><button onclick='values.push(operands); values.push(`*`); operands=[];'
-                    style=background-color:coral;>x</button></li>
-            <li><button onclick='values.push(operands); values.push(`-`); operands=[];'
-                    style=background-color:coral;>-</button></li>
-            <li><button onclick='values.push(operands); values.push(`+`); operands=[];'
-                    style=background-color:coral;>+</button></li>
+            <li><button onclick='values.push(operands, `/`); operands=[];' style=background-color:coral;>/</button></li>
+            <li><button onclick='values.push(operands, `*`); operands=[];' style=background-color:coral;>x</button></li>
+            <li><button onclick='values.push(operands, `-`); operands=[];' style=background-color:coral;>-</button></li>
+            <li><button onclick='values.push(operands, `+`); operands=[];' style=background-color:coral;>+</button></li>
             <li><button onclick='values.push(operands); calculate(values); operands=[];'
                     style=background-color:coral;>=</button></li>
         </ul>
