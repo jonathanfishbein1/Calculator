@@ -6,6 +6,7 @@
     <script>
         let operands = []
             , values = []
+            , result = 0
         const calculate = () => {
             console.log('values ', values)
             const multiplicationTotal = values.reduce((total, currentValue, index) => {
@@ -52,9 +53,12 @@
             console.log('divisionTotal ', divisionTotal)
             console.log('additionTotal ', additionTotal)
             console.log('subtractionTotal ', subtractionTotal)
-            const result = subtractionTotal
+            result = subtractionTotal
             values = []
             document.getElementById('result').innerText = result
+        }, operandInput = operand => {
+            operands.push(operand)
+            document.getElementById('result').innerText = operand
         }
     </script>
 </head>
@@ -65,39 +69,40 @@
         <ul style=list-style-type:none>
             <li>
                 <span>
-                    <button onclick=operands.push(7)>7</button>
-                    <button onclick=operands.push(8)>8</button>
-                    <button onclick=operands.push(9)>9</button>
+                    <button onclick=operandInput(7)>7</button>
+                    <button onclick=operandInput(8)>8</button>
+                    <button onclick=operandInput(9)>9</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button onclick=operands.push(4)>4</button>
-                    <button onclick=operands.push(5)>5</button>
-                    <button onclick=operands.push(6)>6</button>
+                    <button onclick=operandInput(4)>4</button>
+                    <button onclick=operandInput(5)>5</button>
+                    <button onclick=operandInput(6)>6</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button onclick=operands.push(1)>1</button>
-                    <button onclick=operands.push(2)>2</button>
-                    <button onclick=operands.push(3)>3</button>
+                    <button onclick=operandInput(1)>1</button>
+                    <button onclick=operandInput(2)>2</button>
+                    <button onclick=operandInput(3)>3</button>
                 </span>
             </li>
 
             <li>
                 <span>
-                    <button onclick=operands.push(0) style=width:120px;>0</button>
+                    <button onclick=operandInput(7) style=width:120px;>0</button>
                     <button>.</button>
                 </span>
             </li>
         </ul>
 
         <ul style=list-style-type:none;>
-            <li><button onclick='values.push(operands.join(""), `/`); operands=[];'
-                    style=background-color:coral;>/</button></li>
+            <li><button onclick=' values.push(operands.join(""), `/`); operands=[];'
+                    style=background-color:coral;>/</button>
+            </li>
             <li><button onclick='values.push(operands.join(""), `*`); operands=[];'
                     style=background-color:coral;>x</button></li>
             <li><button onclick='values.push(operands.join(""), `-`); operands=[];'
