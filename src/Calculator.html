@@ -52,13 +52,15 @@
             console.log('divisionTotal ', divisionTotal)
             console.log('additionTotal ', additionTotal)
             console.log('subtractionTotal ', subtractionTotal)
+            const result = subtractionTotal
             values = []
+            document.getElementById('result').innerText = result
         }
     </script>
 </head>
 
 <body>
-    <div></div>
+    <div id=result style=color:white;background-color:black;width:200px;></div>
     <div style=display:flex;>
         <ul style=list-style-type:none>
             <li>
