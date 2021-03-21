@@ -101,16 +101,21 @@
         </ul>
 
         <ul style=list-style-type:none;>
-            <li><button onclick=' values.push(operands.join(""), `/`); calculate(); operands=[];'
+            <li><button
+                    onclick='operands.length > 0 ? values.push(operands.join(""), `/`) : values.push(`*`); calculate(); operands=[];'
                     style=background-color:coral;>/</button>
             </li>
-            <li><button onclick='values.push(operands.join(""), `*`); operands=[];'
+            <li><button
+                    onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`); operands=[];'
                     style=background-color:coral;>x</button></li>
-            <li><button onclick='values.push(operands.join(""), `-`); calculate(); operands=[];'
+            <li><button
+                    onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); calculate(); operands=[];'
                     style=background-color:coral;>-</button></li>
-            <li><button onclick='values.push(operands.join(""), `+`); calculate(); operands=[];'
+            <li><button
+                    onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); calculate(); operands=[];'
                     style=background-color:coral;>+</button></li>
-            <li><button onclick='values.push(operands.join("")); calculate(); operands=[];'
+            <li><button
+                    onclick='operands.length > 0 ? values.push(operands.join("")) : undefined; calculate(); operands=[];'
                     style=background-color:coral;>=</button></li>
         </ul>
 
