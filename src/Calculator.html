@@ -53,7 +53,7 @@
             console.log('divisionTotal ', divisionTotal)
             console.log('additionTotal ', additionTotal)
             console.log('subtractionTotal ', subtractionTotal)
-            result = subtractionTotal
+            result = subtractionTotal[0]
             values = []
             document.getElementById('result').innerText = result
         }, operandInput = operand => {
@@ -93,7 +93,7 @@
 
             <li>
                 <span>
-                    <button onclick=operandInput(7) style=width:120px;>0</button>
+                    <button onclick=operandInput(0) style=width:120px;>0</button>
                     <button>.</button>
                 </span>
             </li>
