@@ -32,7 +32,7 @@
             console.log('multiplicationTotal ', multiplicationTotal)
             console.log('divisionTotal ', divisionTotal)
             values = divisionTotal
-            result = divisionTotal[0]
+            result = divisionTotal.length > 1 ? divisionTotal[divisionTotal.length - 2] : divisionTotal[0]
             document.getElementById('result').innerText = result
         }
         const additionSubtractionCalculate = () => {
@@ -115,10 +115,10 @@
                     onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`);  multiplicationDivisionCalculate(); operands=[];'
                     style=background-color:coral;>x</button></li>
             <li><button
-                    onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); additionSubtractionCalculate(); operands=[];'
+                    onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); multiplicationDivisionCalculate(); additionSubtractionCalculate(); operands=[];'
                     style=background-color:coral;>-</button></li>
             <li><button
-                    onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); additionSubtractionCalculate(); operands=[];'
+                    onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); multiplicationDivisionCalculate(); additionSubtractionCalculate(); operands=[];'
                     style=background-color:coral;>+</button></li>
             <li><button
                     onclick='operands.length > 0 ? values.push(operands.join("")) : undefined; multiplicationDivisionCalculate(); additionSubtractionCalculate(); operands=[];'
