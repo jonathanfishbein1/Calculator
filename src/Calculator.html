@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <script>
+        let operands = []
+            , values = []
+            , result = 0
+        const multiplication = () => {
+            const multiplicationTotal = values.reduce((total, currentValue, index) => {
+                const [a, multiplication, b] = total.slice(index - 1, index + 2)
+                if (currentValue === '*' && b !== undefined) {
+                    const left = total.slice(0, index - 1),
+                        right = total.slice(index + 2)
+                    total = [...left, parseInt(a) * parseInt(b), ...right]
+                }
+                else total
+                return total
+            }, values)
+            values = multiplicationTotal
+            result = [...multiplicationTotal].reverse().find(x => !isNaN(x) || x === undefined)
+            result = result.toString().length > 10 ? 'Error' : result
+            document.getElementById('result').innerText = result
+            return multiplicationTotal
+        }
+            , division = () => {
+                divisionTotal = values.reduce((total, currentValue, index) => {
+                    const [a, division, b] = total.slice(index - 1, index + 2)
+                    if (currentValue === '/' && b !== undefined) {
+                        const left = total.slice(0, index - 1),
+                            right = total.slice(index + 2)
+                        total = [...left, b !== '0' ? parseFloat(a) / parseFloat(b) : undefined, ...right]
+                    }
+                    else total
+                    return total
+                }, values)
+                values = divisionTotal
+                result = [...divisionTotal].reverse().find(x => !isNaN(x) || x === undefined)
+                result = result !== undefined ?
+                    result.toString().length > 10 ? 'Error' : result
+                    : undefined
+                document.getElementById('result').innerText = result
+                return divisionTotal
+            }
+            , addition = () => {
+                const additionTotal = values.reduce((total, currentValue, index) => {
+                    const [a, addition, b] = total.slice(index - 1, index + 2)
+                    if (currentValue === '+' && b !== undefined) {
+                        const left = total.slice(0, index - 1),
+                            right = total.slice(index + 2)
+                        total = [...left, parseFloat(a) + parseFloat(b), ...right]
+                    }
+                    else total
+                    return total
+                }, values)
+                values = additionTotal
+                result = [...additionTotal].reverse().find(x => !isNaN(x) || x === undefined)
+                result = result !== undefined ?
+                    result.toString().length > 10 ? 'Error' : result
+                    : undefined
+                document.getElementById('result').innerText = result
+                return additionTotal
+            }
+            , subtraction = () => {
+                subtractionTotal = values.reduce((total, currentValue, index) => {
+                    const [a, subtraction, b] = total.slice(index - 1, index + 2)
+                    if (currentValue === '-' && b !== undefined) {
+                        const left = total.slice(0, index - 1),
+                            right = total.slice(index + 2)
+                        total = [...left, parseInt(a) - parseInt(b), ...right]
+                    }
+                    else total
+                    return total
+                }, values)
+                values = subtractionTotal
+                result = [...subtractionTotal].reverse().find(x => !isNaN(x) || x === undefined)
+                result = result !== undefined ?
+                    result.toString().length > 10 ? 'Error' : result
+                    : undefined
+                document.getElementById('result').innerText = result
+            }, operandInput = operand => {
+                operands.push(operand)
+                document.getElementById('result').innerText = operands.join("")
+            }
+
+    </script>
+</head>
+
+<body>
+    <div id=result style=text-align:right;color:white;background-color:black;width:215px;font-size:25px>0</div>
+    <div>
+
+        <button style=width:50px>AC</button>
+        <button style=width:50px>+/-</button>
+        <button style=width:50px>%</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `/`) : values.push(`/`); 
+            multiplication(); division(); operands=[];' style=background-color:coral;width:50px;height:27px>/</button>
+    </div>
+
+    <div>
+        <button onclick=operandInput(7) style=width:50px>7</button>
+        <button onclick=operandInput(8) style=width:50px>8</button>
+        <button onclick=operandInput(9) style=width:50px>9</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`); 
+            multiplication(); operands=[];' style=background-color:coral;width:50px;height:27px>x</button>
+    </div>
+    <div>
+        <button onclick=operandInput(4) style=width:50px>4</button>
+        <button onclick=operandInput(5) style=width:50px>5</button>
+        <button onclick=operandInput(6) style=width:50px>6</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); 
+            multiplication(); division(); addition(); subtraction(); operands=[];'
+            style=background-color:coral;width:50px;height:27px>-</button>
+    </div>
+    <div>
+        <button onclick=operandInput(1) style=width:50px>1</button>
+        <button onclick=operandInput(2) style=width:50px>2</button>
+        <button onclick=operandInput(3) style=width:50px>3</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); 
+            multiplication(); division(); addition(); operands=[];'
+            style=background-color:coral;width:50px;height:27px>+</button>
+    </div>
+
+    <div>
+        <button onclick=operandInput(0) style=width:105px;>0</button>
+        <button onclick='operandInput(".")' style=width:50px>.</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join("")) : undefined; 
+            multiplication(); division(); addition(); subtraction(); operands=[];'
+            style=background-color:coral;width:50px;height:27px>=</button>
+    </div>
+
+</body>
+
+</html>
