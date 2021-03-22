@@ -81,58 +81,46 @@
 </head>
 
 <body>
-    <div id=result style=color:white;background-color:black;width:200px;>0</div>
-    <div style=display:flex;>
-        <ul style=list-style-type:none>
-            <li>
-                <span>
-                    <button onclick=operandInput(7)>7</button>
-                    <button onclick=operandInput(8)>8</button>
-                    <button onclick=operandInput(9)>9</button>
-                </span>
-            </li>
+    <div id=result style=text-align:right;color:white;background-color:black;width:215px;font-size:25px>0</div>
+    <div>
 
-            <li>
-                <span>
-                    <button onclick=operandInput(4)>4</button>
-                    <button onclick=operandInput(5)>5</button>
-                    <button onclick=operandInput(6)>6</button>
-                </span>
-            </li>
+        <button style=width:50px>AC</button>
+        <button style=width:50px>+/-</button>
+        <button style=width:50px>%</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `/`) : values.push(`/`); 
+            multiplication(); division(); operands=[];' style=background-color:coral;width:50px;height:27px>/</button>
+    </div>
 
-            <li>
-                <span>
-                    <button onclick=operandInput(1)>1</button>
-                    <button onclick=operandInput(2)>2</button>
-                    <button onclick=operandInput(3)>3</button>
-                </span>
-            </li>
-
-            <li>
-                <span>
-                    <button onclick=operandInput(0) style=width:120px;>0</button>
-                    <button onclick='operandInput(".")'>.</button>
-                </span>
-            </li>
-        </ul>
-
-        <ul style=list-style-type:none;>
-            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `/`) : values.push(`/`); 
-                    multiplication(); division(); operands=[];' style=background-color:coral;>/</button>
-            </li>
-            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`); 
-                    multiplication(); operands=[];' style=background-color:coral;>x</button></li>
-            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); 
-                    multiplication(); division(); addition(); subtraction(); operands=[];'
-                    style=background-color:coral;>-</button></li>
-            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); 
-                    multiplication(); division(); addition(); operands=[];' style=background-color:coral;>+</button>
-            </li>
-            <li><button onclick='operands.length > 0 ? values.push(operands.join("")) : undefined; 
+    <div>
+        <button onclick=operandInput(7) style=width:50px>7</button>
+        <button onclick=operandInput(8) style=width:50px>8</button>
+        <button onclick=operandInput(9) style=width:50px>9</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`); 
+            multiplication(); operands=[];' style=background-color:coral;width:50px;height:27px>x</button>
+    </div>
+    <div>
+        <button onclick=operandInput(4) style=width:50px>4</button>
+        <button onclick=operandInput(5) style=width:50px>5</button>
+        <button onclick=operandInput(6) style=width:50px>6</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); 
             multiplication(); division(); addition(); subtraction(); operands=[];'
-                    style=background-color:coral;>=</button></li>
-        </ul>
+            style=background-color:coral;width:50px;height:27px>-</button>
+    </div>
+    <div>
+        <button onclick=operandInput(1) style=width:50px>1</button>
+        <button onclick=operandInput(2) style=width:50px>2</button>
+        <button onclick=operandInput(3) style=width:50px>3</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); 
+            multiplication(); division(); addition(); operands=[];'
+            style=background-color:coral;width:50px;height:27px>+</button>
+    </div>
 
+    <div>
+        <button onclick=operandInput(0) style=width:105px;>0</button>
+        <button onclick='operandInput(".")' style=width:50px>.</button>
+        <button onclick='operands.length > 0 ? values.push(operands.join("")) : undefined; 
+            multiplication(); division(); addition(); subtraction(); operands=[];'
+            style=background-color:coral;width:50px;height:27px>=</button>
     </div>
 
 </body>
