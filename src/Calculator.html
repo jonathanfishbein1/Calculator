@@ -19,7 +19,7 @@
                 return total
             }, values)
             values = multiplicationTotal
-            result = [...multiplicationTotal].reverse().find(x => !isNaN(x))
+            result = [...multiplicationTotal].reverse().find(x => !isNaN(x) || x === undefined)
             result = result.toString().length > 10 ? 'Error' : result
             document.getElementById('result').innerText = result
             return multiplicationTotal
@@ -36,8 +36,10 @@
                     return total
                 }, values)
                 values = divisionTotal
-                result = [...divisionTotal].reverse().find(x => !isNaN(x))
-                result = result.toString().length > 10 ? 'Error' : result
+                result = [...divisionTotal].reverse().find(x => !isNaN(x) || x === undefined)
+                result = result !== undefined ?
+                    result.toString().length > 10 ? 'Error' : result
+                    : undefined
                 document.getElementById('result').innerText = result
                 return divisionTotal
             }
@@ -53,10 +55,11 @@
                     return total
                 }, values)
                 values = additionTotal
-                result = [...additionTotal].reverse().find(x => !isNaN(x))
-                result = result.toString().length > 10 ? 'Error' : result
+                result = [...additionTotal].reverse().find(x => !isNaN(x) || x === undefined)
+                result = result !== undefined ?
+                    result.toString().length > 10 ? 'Error' : result
+                    : undefined
                 document.getElementById('result').innerText = result
-                console.log('values ', values)
                 return additionTotal
             }
             , subtraction = () => {
@@ -71,8 +74,10 @@
                     return total
                 }, values)
                 values = subtractionTotal
-                result = [...subtractionTotal].reverse().find(x => !isNaN(x))
-                result = result.toString().length > 10 ? 'Error' : result
+                result = [...subtractionTotal].reverse().find(x => !isNaN(x) || x === undefined)
+                result = result !== undefined ?
+                    result.toString().length > 10 ? 'Error' : result
+                    : undefined
                 document.getElementById('result').innerText = result
             }, operandInput = operand => {
                 operands.push(operand)
