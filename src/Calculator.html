@@ -13,7 +13,7 @@
                 if (currentValue === '*' && b !== undefined) {
                     const left = total.slice(0, index - 1),
                         right = total.slice(index + 2)
-                    total = [...left, parseInt(a) * parseInt(b), ...right]
+                    total = [...left, parseFloat(a) * parseFloat(b), ...right]
                 }
                 else total
                 return total
@@ -68,7 +68,7 @@
                     if (currentValue === '-' && b !== undefined) {
                         const left = total.slice(0, index - 1),
                             right = total.slice(index + 2)
-                        total = [...left, parseInt(a) - parseInt(b), ...right]
+                        total = [...left, parseFloat(a) - parseFloat(b), ...right]
                     }
                     else total
                     return total
