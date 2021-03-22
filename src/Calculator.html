@@ -7,7 +7,7 @@
         let operands = []
             , values = []
             , result = 0
-        const multiplicationDivisionCalculate = () => {
+        const multiplication = () => {
             const multiplicationTotal = values.reduce((total, currentValue, index) => {
                 const [a, multiplication, b] = total.slice(index - 1, index + 2)
                 if (currentValue === '*' && b !== undefined) {
@@ -16,27 +16,31 @@
                     total = [...left, parseInt(a) * parseInt(b), ...right]
                 }
                 else total
-                console.log('total ', total)
+
                 return total
             }, values)
-                , divisionTotal = multiplicationTotal.reduce((total, currentValue, index) => {
-                    const [a, division, b] = total.slice(index - 1, index + 2)
-                    if (currentValue === '/' && b !== undefined) {
-                        const left = total.slice(0, index - 1),
-                            right = total.slice(index + 2)
-                        total = [...left, b !== '0' ? parseFloat(a) / parseFloat(b) : undefined, ...right]
-                    }
-                    else total
-                    return total
-                }, multiplicationTotal)
-            console.log('multiplicationTotal ', multiplicationTotal)
-            console.log('divisionTotal ', divisionTotal)
+            values = multiplicationTotal
+            result = multiplicationTotal.length > 1 ? multiplicationTotal[multiplicationTotal.length - 2] : multiplicationTotal[0]
+            document.getElementById('result').innerText = result
+            return multiplicationTotal
+        }
+        const division = () => {
+            divisionTotal = values.reduce((total, currentValue, index) => {
+                const [a, division, b] = total.slice(index - 1, index + 2)
+                if (currentValue === '/' && b !== undefined) {
+                    const left = total.slice(0, index - 1),
+                        right = total.slice(index + 2)
+                    total = [...left, b !== '0' ? parseFloat(a) / parseFloat(b) : undefined, ...right]
+                }
+                else total
+                return total
+            }, values)
             values = divisionTotal
             result = divisionTotal.length > 1 ? divisionTotal[divisionTotal.length - 2] : divisionTotal[0]
             document.getElementById('result').innerText = result
+            return divisionTotal
         }
-        const additionSubtractionCalculate = () => {
-            console.log('values ', values)
+        const addition = () => {
             const additionTotal = values.reduce((total, currentValue, index) => {
                 const [a, addition, b] = total.slice(index - 1, index + 2)
                 if (currentValue === '+' && b !== undefined) {
@@ -47,19 +51,22 @@
                 else total
                 return total
             }, values)
-                , subtractionTotal = additionTotal.reduce((total, currentValue, index) => {
-                    const [a, subtraction, b] = total.slice(index - 1, index + 2)
-                    if (currentValue === '-' && b !== undefined) {
-                        const left = total.slice(0, index - 1),
-                            right = total.slice(index + 2)
-                        total = [...left, parseInt(a) - parseInt(b), ...right]
-                    }
-                    else total
-                    return total
-                }, additionTotal)
-
-            console.log('additionTotal ', additionTotal)
-            console.log('subtractionTotal ', subtractionTotal)
+            values = additionTotal
+            result = additionTotal.length > 1 ? additionTotal[additionTotal.length - 2] : additionTotal[0]
+            document.getElementById('result').innerText = result
+            return additionTotal
+        }
+        const subtraction = () => {
+            subtractionTotal = values.reduce((total, currentValue, index) => {
+                const [a, subtraction, b] = total.slice(index - 1, index + 2)
+                if (currentValue === '-' && b !== undefined) {
+                    const left = total.slice(0, index - 1),
+                        right = total.slice(index + 2)
+                    total = [...left, parseInt(a) - parseInt(b), ...right]
+                }
+                else total
+                return total
+            }, values)
             values = subtractionTotal
             result = subtractionTotal[0]
             document.getElementById('result').innerText = result
@@ -107,21 +114,19 @@
         </ul>
 
         <ul style=list-style-type:none;>
-            <li><button
-                    onclick='operands.length > 0 ? values.push(operands.join(""), `/`) : values.push(`*`); multiplicationDivisionCalculate(); operands=[];'
-                    style=background-color:coral;>/</button>
+            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `/`) : values.push(`/`); 
+                    multiplication(); division(); operands=[];' style=background-color:coral;>/</button>
             </li>
-            <li><button
-                    onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`);  multiplicationDivisionCalculate(); operands=[];'
-                    style=background-color:coral;>x</button></li>
-            <li><button
-                    onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); multiplicationDivisionCalculate(); additionSubtractionCalculate(); operands=[];'
+            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`); 
+                    multiplication(); operands=[];' style=background-color:coral;>x</button></li>
+            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `-`) : values.push(`-`); 
+                    multiplication(); division(); addition(); subtraction(); operands=[];'
                     style=background-color:coral;>-</button></li>
-            <li><button
-                    onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); multiplicationDivisionCalculate(); additionSubtractionCalculate(); operands=[];'
-                    style=background-color:coral;>+</button></li>
-            <li><button
-                    onclick='operands.length > 0 ? values.push(operands.join("")) : undefined; multiplicationDivisionCalculate(); additionSubtractionCalculate(); operands=[];'
+            <li><button onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); 
+                    multiplication(); division(); addition(); operands=[];' style=background-color:coral;>+</button>
+            </li>
+            <li><button onclick='operands.length > 0 ? values.push(operands.join("")) : undefined; 
+            multiplication(); division(); addition(); subtraction(); operands=[];'
                     style=background-color:coral;>=</button></li>
         </ul>
 
