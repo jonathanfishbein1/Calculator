@@ -20,9 +20,7 @@
             }, values)
             values = multiplicationTotal
             result = multiplicationTotal.length > 1 ? multiplicationTotal[multiplicationTotal.length - 2] : multiplicationTotal[0]
-            console.log('result ', result)
-            console.log('result.length ', result.length)
-            result.toString().length > 10 ? result = 'Error' : result
+            result = result.toString().length > 10 ? 'Error' : result
             document.getElementById('result').innerText = result
             return multiplicationTotal
         }
@@ -39,7 +37,7 @@
                 }, values)
                 values = divisionTotal
                 result = divisionTotal.length > 1 ? divisionTotal[divisionTotal.length - 2] : divisionTotal[0]
-                result.toString().length > 10 ? result = 'Error' : result
+                result = result.toString().length > 10 ? 'Error' : result
                 document.getElementById('result').innerText = result
                 return divisionTotal
             }
@@ -56,7 +54,7 @@
                 }, values)
                 values = additionTotal
                 result = additionTotal.length > 1 ? additionTotal[additionTotal.length - 2] : additionTotal[0]
-                result.toString().length > 10 ? result = 'Error' : result
+                result = result.toString().length > 10 ? 'Error' : result
                 document.getElementById('result').innerText = result
                 return additionTotal
             }
@@ -73,7 +71,7 @@
                 }, values)
                 values = subtractionTotal
                 result = subtractionTotal[0]
-                result.toString().length > 10 ? result = 'Error' : result
+                result = result.toString().length > 10 ? 'Error' : result
                 document.getElementById('result').innerText = result
             }, operandInput = operand => {
                 operands.push(operand)
