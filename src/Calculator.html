@@ -19,7 +19,7 @@
                 return total
             }, values)
             values = multiplicationTotal
-            result = multiplicationTotal.length > 1 ? multiplicationTotal[multiplicationTotal.length - 2] : multiplicationTotal[0]
+            result = [...multiplicationTotal].reverse().find(x => !isNaN(x))
             result = result.toString().length > 10 ? 'Error' : result
             document.getElementById('result').innerText = result
             return multiplicationTotal
@@ -36,7 +36,7 @@
                     return total
                 }, values)
                 values = divisionTotal
-                result = divisionTotal.length > 1 ? divisionTotal[divisionTotal.length - 2] : divisionTotal[0]
+                result = [...divisionTotal].reverse().find(x => !isNaN(x))
                 result = result.toString().length > 10 ? 'Error' : result
                 document.getElementById('result').innerText = result
                 return divisionTotal
@@ -53,9 +53,10 @@
                     return total
                 }, values)
                 values = additionTotal
-                result = additionTotal.length > 1 ? additionTotal[additionTotal.length - 2] : additionTotal[0]
+                result = [...additionTotal].reverse().find(x => !isNaN(x))
                 result = result.toString().length > 10 ? 'Error' : result
                 document.getElementById('result').innerText = result
+                console.log('values ', values)
                 return additionTotal
             }
             , subtraction = () => {
@@ -70,13 +71,14 @@
                     return total
                 }, values)
                 values = subtractionTotal
-                result = subtractionTotal[0]
+                result = [...subtractionTotal].reverse().find(x => !isNaN(x))
                 result = result.toString().length > 10 ? 'Error' : result
                 document.getElementById('result').innerText = result
             }, operandInput = operand => {
                 operands.push(operand)
                 document.getElementById('result').innerText = operands.join("")
             }
+
     </script>
 </head>
 
