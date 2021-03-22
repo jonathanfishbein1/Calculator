@@ -103,7 +103,7 @@
         <button onclick=operandInput(8) style=width:50px>8</button>
         <button onclick=operandInput(9) style=width:50px>9</button>
         <button onclick='operands.length > 0 ? values.push(operands.join(""), `*`) : values.push(`*`); 
-            multiplication(); operands=[];' style=background-color:coral;width:50px;height:27px>x</button>
+            multiplication(); division(); operands=[];' style=background-color:coral;width:50px;height:27px>x</button>
     </div>
     <div>
         <button onclick=operandInput(4) style=width:50px>4</button>
@@ -118,7 +118,7 @@
         <button onclick=operandInput(2) style=width:50px>2</button>
         <button onclick=operandInput(3) style=width:50px>3</button>
         <button onclick='operands.length > 0 ? values.push(operands.join(""), `+`) : values.push(`+`); 
-            multiplication(); division(); addition(); operands=[];'
+            multiplication(); division(); addition(); subtraction(); operands=[];'
             style=background-color:coral;width:50px;height:27px>+</button>
     </div>
 
